@@ -83,9 +83,9 @@ class PrologWrapper:
         """
         Retorna todos os problemas conhecidos.
         """
-        resultado = self._query("todos_os_problemas(Problema)")
+        resultado = self._query("todos_os_problemas(Problemas)")
         if resultado:
-            return [res['Problema'] for res in resultado]
+            return resultado[0]['Problemas']
         else:
             return []
     
@@ -105,7 +105,7 @@ class PrologWrapper:
         """
         resultado = self._query(f"sintomas_sistema({self._format(sistema)}, Sintomas)")
         if resultado:
-            return [res['Sintomas'] for res in resultado]
+            return resultado[0]['Sintomas']
         else:
             return []
     
@@ -139,7 +139,7 @@ class PrologWrapper:
         else:
             return []
     
-    def todosProblemas(self):
+    def todosProblemasDropDown(self):
         """
         Retorna todos os problemas conhecidos.
         """
@@ -159,6 +159,25 @@ class PrologWrapper:
         else:
             return []
         
+    def todosSistemas(self):
+        """
+        Retorna todos os sistemas conhecidos.
+        """
+        resultado = self._query("todos_os_sistemas(Sistemas)")
+        if resultado:
+            return resultado[0]['Sistemas']
+        else:
+            return []
+        
+    def todosSistemasDropdown(self):
+        """
+        Retorna todos os sistemas conhecidos.
+        """
+        resultado = self._query("todos_os_sistemas(Sistemas)")
+        if resultado:
+            return [res['Sistemas'] for res in resultado]
+        else:
+            return []
     
 if __name__ == "__main__":
     p = PrologWrapper()
