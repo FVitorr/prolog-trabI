@@ -99,7 +99,6 @@ sintoma(vazamento_fluido_direcao).
 sintoma(folga_direcao).
 sintoma(dificuldade_controlar_direcao).
 sintoma(desenho_direcao_puxando_lado).
-sintoma(danos_pneu_direcao).
 sintoma(volante_folgado).
 sintoma(barulho_ao_girar).
 sintoma(volante_torto).
@@ -162,11 +161,14 @@ reparo(motor_partida_queimado, 3, 800).
 reparo(farois_queimados, 1, 200).
 
 
-% 1. Regra para Diagnosticar Problemas Baseado em Sintomas
-diagnostico(Sintomas, Problema) :-
-    problema(Problema, SintomasProblema, _, _),
-    
-    subset(SintomasProblema, Sintomas).
+% 1. Regra para Diagnosticar Problemas a partir de Sintomas
+diagnostico(SintomasFornecidos, Problemas) :-
+    findall(Problema, 
+        (problema(Problema, Sintomas, _, _),
+         member(Sintoma, SintomasFornecidos),
+         member(Sintoma, Sintomas)), 
+        ProblemasComuns),
+    sort(ProblemasComuns, Problemas).
 
 % 2. Regra para Sugerir Reparo Dado um Problema
 solucao(Problema, Tempo, Custo) :-
@@ -308,6 +310,5 @@ todos_os_sistemas(Sistemas) :-
 todos_os_componentes(Componentes) :-
     findall(Componente, componente(Componente), Componentes).
 
-% 12 - todos os componentes de um sistema
-todos_os_problemas(Problemas) :-
-    findall(Problema, problema(Problema, _, _, _), Problemas).
+todos_os_sintomas(Sintomas) :-
+    findall(Sintoma, sintoma(Sintoma), Sintomas).

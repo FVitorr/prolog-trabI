@@ -31,9 +31,11 @@ class PrologWrapper:
         """
         Retorna o diagnóstico baseado no sintoma fornecido.
         """
-        resultado = self._query(f"diagnostico(Sintoma, {self._format(problema)})")
+        print(self._format(problema))
+        resultado = self._query(f"diagnostico({self._format(problema)}, Problema)")
         if resultado:
-            return resultado[0]['Sintoma']
+            print(resultado)
+            return resultado[0]['Problema']
         else:
             return None
     
@@ -160,7 +162,7 @@ class PrologWrapper:
     
 if __name__ == "__main__":
     p = PrologWrapper()
-    print(p.diagnostico("bomba_hidraulica_com_defeito"))
+    print(p.diagnostico("motor_nao_aquece"))
     print(p.solucao("bomba_hidraulica_com_defeito"))
     print(p.nivelCriticidade("bomba_hidraulica_com_defeito"))
     print(p.componentesAfetados("bomba_hidraulica_com_defeito"))
