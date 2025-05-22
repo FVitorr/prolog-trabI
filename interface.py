@@ -46,7 +46,6 @@ class SistemaEspecialistaApp(ctk.CTk):
         self.aba_componentes_afetados()
         self.aba_sistema_problematico()
         self.aba_todos_problemas()
-        # self.aba_possiveis_problemas()
         self.aba_sintomas_sistema()
         self.aba_problemas_gravidade()
         self.aba_problemas_resolvidos()
@@ -292,46 +291,6 @@ class SistemaEspecialistaApp(ctk.CTk):
             ctk.CTkLabel(self.resultados_todos_problemas, text="Nenhum problema encontrado", 
                         font=ctk.CTkFont(size=14)).pack(pady=5)
 
-    # def aba_possiveis_problemas(self):
-    #     frame = self.frames['Possíveis problemas']
-    #     ctk.CTkLabel(frame, text="Escolha um sintoma:", font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
-        
-    #     self.optionmenu_sintoma = ctk.CTkOptionMenu(frame, values=self.sintomas)
-    #     self.optionmenu_sintoma.pack(pady=5, padx=10)
-        
-    #     ctk.CTkButton(frame, text="Buscar Problemas", 
-    #                  command=self.rodar_possiveis_problemas).pack(pady=10)
-    #     ctk.CTkButton(frame, text="Limpar", command=self.limpar_possiveis_problemas).pack(pady=5)
-
-    #     ctk.CTkLabel(frame, text="Resultados:", font=ctk.CTkFont(size=14, weight="bold")).pack(pady=(20, 5))
-    #     self.resultados_possiveis_problemas = ctk.CTkScrollableFrame(frame)
-    #     self.resultados_possiveis_problemas.pack(pady=5, padx=10, fill="both", expand=True)
-
-    # def rodar_possiveis_problemas(self):
-    #     sintoma = self.optionmenu_sintoma.get().replace(" ", "_").lower()
-        
-    #     for widget in self.resultados_possiveis_problemas.winfo_children():
-    #         widget.destroy()
-            
-    #     if not sintoma:
-    #         ctk.CTkLabel(self.resultados_possiveis_problemas, text="Selecione um sintoma", 
-    #                      font=ctk.CTkFont(size=14)).pack(pady=5)
-    #         return
-            
-    #     problemas = self.prolog.possiveisProblemas(sintoma)
-    #     if problemas:
-    #         problemas_formatados = [prob.replace("_", " ").title() for prob in problemas[0]]
-    #         for problema in problemas_formatados:
-    #             ctk.CTkLabel(self.resultados_possiveis_problemas, text=problema, 
-    #                         font=ctk.CTkFont(size=14)).pack(pady=2, anchor="w")
-    #     else:
-    #         ctk.CTkLabel(self.resultados_possiveis_problemas, text="Nenhum problema encontrado", 
-    #                     font=ctk.CTkFont(size=14)).pack(pady=5)
-
-    # def limpar_possiveis_problemas(self):
-    #     self.optionmenu_sintoma.set("")
-    #     for widget in self.resultados_possiveis_problemas.winfo_children():
-    #         widget.destroy()
 
     def aba_sintomas_sistema(self):
         frame = self.frames['Sintomas de um sistema']
@@ -375,6 +334,7 @@ class SistemaEspecialistaApp(ctk.CTk):
         for widget in self.resultados_sintomas_sistema.winfo_children():
             widget.destroy()
 
+
     def aba_problemas_gravidade(self):
         frame = self.frames['Problemas por gravidade']
         ctk.CTkLabel(frame, text="Problemas ordenados por gravidade:", font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
@@ -406,6 +366,7 @@ class SistemaEspecialistaApp(ctk.CTk):
         else:
             ctk.CTkLabel(self.resultados_problemas_gravidade, text="Nenhum problema encontrado", 
                         font=ctk.CTkFont(size=14)).pack(pady=5)
+
 
     def aba_problemas_resolvidos(self):
         frame = self.frames['Problemas resolvidos a tempo']

@@ -216,7 +216,7 @@ sintomas_sistema(Sistema, SintomasUnicos) :-
         SintomasDuplicados),
     sort(SintomasDuplicados, SintomasUnicos).
 
-% Dada uma lista de problemas, retorne os problemas ordenador por gravidade - recusivo
+% Dada uma lista de problemas, retorna os problemas ordenador por gravidade - recusivo
 % ?- ordenar_problemas_por_gravidade([fusivel_queimado, bomba_agua_quebrada, caixa_direcao_folgada, bateria_descarregando], L).
 % Retorna o peso de um problema com base na sua gravidade
 peso_problema(Problema, Peso) :-
@@ -243,7 +243,7 @@ inserir_ordenado_por_gravidade(Problema, [H|T], [H|Resto]) :-
     Peso1 < Peso2,
     inserir_ordenado_por_gravidade(Problema, T, Resto).
 
-% 9- Algoritimo da mochila: dada uma lista de problemas, retorne os problemas que podem ser resolvidos a tempo , com maior custo
+% 9- Algoritimo da mochila: dada uma lista de problemas, retorna os problemas que podem ser resolvidos a tempo , com maior custo
 % ?- problemas_resolvidos_a_tempo([fusivel_queimado, bomba_agua_quebrada, caixa_direcao_folgada, bateria_descarregando], TempoMaximo, ProblemasResolvidos).
 % Reuso da base de dados: problema(nome, _, _, gravidade) e reparo(nome, tempo, custo)
 
